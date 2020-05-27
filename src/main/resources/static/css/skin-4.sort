@@ -1,0 +1,32 @@
+  background: #FD4040;  /* color de fondo letra .skin-4 .nav > li > a*/
+body.skin-4 {
+.fixed-nav.skin-4 .navbar-fixed-top {
+.skin-4 .breadcrumb {
+.skin-4 .dashboard-header {
+.skin-4.fixed-nav .minimalize-styl-2 {
+.skin-4 .ibox-content {
+.skin-4 .ibox-content:last-child {
+.skin-4 .ibox-title,
+.skin-4 .img-circle {
+.skin-4 .minimalize-styl-2 {
+.skin-4.mini-navbar .nav-second-level {
+.skin-4 .navbar-default .nav > li > a:focus {
+.skin-4 .navbar-default .nav > li > a:hover,
+.skin-4 .navbar-minimalize {
+.skin-4 .navbar-static-top {
+.skin-4 .navbar-top-links li:last-child {
+.skin-4 .nav-header {
+.skin-4 .nav-header {
+.skin-4 .nav-header a.dropdown-toggle {
+.skin-4 .nav-header a.dropdown-toggle .text-muted {
+.skin-4 .nav > li > a { /*color de letra desactivada*/
+.skin-4 .nav > li.active {
+.skin-4 .nav > li.active > a { /*color de letra activada*/
+.skin-4 .nav > li.active { /*productos de nomina*/
+.skin-4 .nav.nav-tabs > li.active {
+.skin-4 .nav.nav-tabs > li.active > a {
+.skin-4 .page-heading {
+.skin-4 #page-wrapper {
+.skin-4 .profile-element {
+.skin-4 .spin-icon {
+.skin-4 .wrapper-content {

@@ -1,0 +1,4 @@
+
+
+# Para probar el acceso
+http://localhost:8085/route?usuario=academy.archysoft@gmail.com&password=pinocho

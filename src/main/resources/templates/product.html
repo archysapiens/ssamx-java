@@ -1,0 +1,1727 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+
+<!--
+	<link href="https://framework-gb.cdn.gob.mx/assets/styles/main.css" rel="stylesheet">
+-->
+
+<link rel="icon" href="../img/salud.png">
+
+<meta charset="utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"> 
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Secretaria de Salud</title>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"      rel="stylesheet">
+         <!-- Mainly scripts -->
+    <script src="js/jquery-2.1.1.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/plugins/metisMenu/jquery.metisMenu.js"></script>
+    <script src="js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+
+<!--
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+-->
+<!-- ChartJS-->
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.0/jquery-confirm.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.0/jquery-confirm.min.js"></script>
+
+<script src="js/dist/Chart.min.js"></script>
+
+  <script src="js/utils.js"></script>
+
+
+
+
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<link href="font-awesome/css/font-awesome.css" rel="stylesheet">
+
+<!-- Toastr style -->
+<link href="css/plugins/toastr/toastr.min.css" rel="stylesheet">
+
+<!-- Gritter -->
+<link href="js/plugins/gritter/jquery.gritter.css" rel="stylesheet">
+
+<link href="css/plugins/jQueryUI/jquery-ui-1.10.4.custom.min.css" rel="stylesheet">
+<link href="css/plugins/jqGrid/ui.jqgrid.css" rel="stylesheet">
+
+
+<link href="css/animate.css" rel="stylesheet">
+<link href="css/style.css" rel="stylesheet">
+
+<link href="css/plugins/dropzone/basic.css" rel="stylesheet">
+<link href="css/plugins/dropzone/dropzone.css" rel="stylesheet">
+<!--          
+            <link href="../css/plugins/jqGrid/ui.jqgrid.css" rel="stylesheet">
+-->            
+          
+<link href="css/plugins/dataTables/dataTables.bootstrap.css" rel="stylesheet">
+<link href="css/plugins/dataTables/dataTables.responsive.css" rel="stylesheet">
+<link href="css/plugins/dataTables/dataTables.tableTools.min.css" rel="stylesheet">
+
+<link href="css/spinner.css" rel="stylesheet">
+
+<style>    
+.material-icons.md-18 { font-size: 18px; }
+.material-icons.md-24 { font-size: 24px; }
+.material-icons.md-36 { font-size: 36px; }
+.material-icons.md-48 { font-size: 48px; }
+</style>
+
+
+<style>
+.dgrhtcss{
+color:#f9f9f9
+}
+
+.dgrhtcssdft{
+color:#333;
+text-shadow: 1px 0px 0px black;
+}
+
+.tabla_pn_ultra{
+    background-color: #e2eaf1;
+}
+
+.tabla_pn_purpura{
+    background-color: #eccc9c;
+}
+
+
+</style>
+
+<style>
+    /* message box */
+    .message-box {
+      display: none;
+      position: fixed;
+      left: 0px;
+      top: 0px;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 9999;
+    }
+    .message-box.open {
+      display: block;
+    }
+    .message-box .mb-container {
+      position: absolute;
+      left: 0px;
+      top: 35%; /** archy.sapiens 
+      background: #13322B; 
+      background: #285C4D; 
+      background: #D4C19C;**/
+      background: #B38E5D;
+      opacity:0.8;
+      padding: 20px;
+      width: 100%;
+    }
+    .message-box .mb-container .mb-middle {
+      width: 50%;
+      left: 25%;
+      position: relative;
+      color: #FFF;
+    }
+    .message-box .mb-container .mb-middle .mb-title {
+      width: 100%;
+      float: left;
+      padding: 10px 0px 0px;
+      font-size: 31px;
+      font-weight: 400;
+      line-height: 36px;
+    }
+    .message-box .mb-container .mb-middle .mb-title .fa,
+    .message-box .mb-container .mb-middle .mb-title .glyphicon {
+      font-size: 38px;
+      float: left;
+      margin-right: 10px;
+    }
+    .message-box .mb-container .mb-middle .mb-content {
+      width: 100%;
+      float: left;
+      padding: 10px 0px 0px;
+    }
+    .message-box .mb-container .mb-middle .mb-content p {
+      margin-bottom: 0px;
+    }
+    .message-box .mb-container .mb-middle .mb-footer {
+      width: 100%;
+      float: left;
+      padding: 10px 0px;
+    }
+    .message-box.message-box-warning .mb-container {
+      background: rgba(254, 162, 35, 0.9);
+    }
+    .message-box.message-box-danger .mb-container {
+      background: rgba(182, 70, 69, 0.9);
+    }
+    .message-box.message-box-info .mb-container {
+      background: rgba(63, 186, 228, 0.9);
+    }
+    .message-box.message-box-success .mb-container {
+      background: rgba(149, 183, 93, 0.9);
+    }
+    /* end message box */
+    </style>
+
+<style>
+    @media screen and (max-width: 600px){
+      .message-box .mb-container {
+        top: 22%;
+      }
+      .message-box .mb-container .mb-middle .mb-title {
+        float: left;
+        padding: 10px 0px 0px;
+        font-size: 21px;
+        font-weight: 400;
+        line-height: 36px;
+        width:160%;
+      }
+    }
+</style>
+
+<script>
+function PersonalizaPerfil(){
+// $Script
+       $("body").removeClass("skin-2");
+                                $("body").removeClass("skin-3");
+
+                                $("body").removeClass("skin-4");
+                                $("body").removeClass("skin-5");
+                                $("body").removeClass("skin-6");
+                                $("body").removeClass("skin-7");
+
+
+                                $("body").addClass("skin-1");
+
+}
+</script>
+
+  <style>
+  canvas {
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+  }
+  </style>
+
+</head>
+<body onload="PersonalizaPerfil();">
+
+ <audio id="audio-alert" src="../audio/alert.mpeg" preload="auto"></audio>
+  <audio id="audio-fail"  src="../audio/fail.mpeg"  preload="auto"></audio>
+
+<div id="loadingtest" style="display:none">mi imagen</div>
+
+    <!-- END PRELOADS -->
+
+$Modal
+
+
+$ModalDCP
+
+$ModalResume
+
+<!-- MESSAGE BOX-->
+      <div class="message-box animated fadeIn" data-sound="alert" id="mb-signout">
+        <div class="mb-container">
+          <div class="mb-middle">
+            <div class="mb-title"><span class="fa fa-sign-out"></span> ¿<strong>Cerrar sesión</strong> ?</div>
+            <div class="mb-content">
+              <p>¿Seguro que quieres salir?</p>                    
+              <p>Pulse 'No' si desea continuar trabajando. Pulse 'Sí' para salir del usuario actual.</p>
+            </div>
+            <div class="mb-footer">
+              <div class="pull-right">
+                <a href="#" id="btn-logout" class="btn btn-primary" style="background-color: white;border-color: white;color: black;">Sí</a>
+                <button class="btn btn-default mb-control-close" style="background-color: white;border-color: white;color: black;">No</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+<!-- END MESSAGE BOX-->
+
+
+
+
+  <div class="modal fade" id="myModalTmp" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">Modal Header</h4>
+          </div>
+          <div class="modal-body">
+            <p>Some text in the modal.</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+      </div>
+
+    </div>
+  </div>
+  
+
+
+
+
+
+
+
+
+    <div class="spiner-example modal inmodal" id="myModal4" tabindex="-1" 
+    role="dialog" aria-hidden="true" style="display:none; height:100%; position: absolute;" data-backdrop="static" data-keyboard="false">
+   <br>
+      <br>
+      <br>
+
+    <img src='../images/loading_BIG.gif' style='color:white;padding-top:8%;padding-left:40%;'/>
+
+    </div>
+              
+
+<br>
+
+
+<table align="center" height="60" style="width: 100%">
+  <tr>
+     <td width="40%" align="left"><img src="images/logoSALUD_hoz.png" width="347" height="117" /></td>
+     <!--<td width="420" align="left">
+     <img src="../images/70Salud.jpg" width="375" height="91" /></td>-->
+     <!--<td width="683" align="right">
+     <div id="dominio">Recepción Art. 74</div>
+
+     
+     </td>  -->  
+     <td width="60%" align="right">
+             <div class="col-lg-11">
+                    <h2 id=dgrht> Dirección General de Recursos Humanos y Organización
+                    
+                    </h2>
+        </div>
+
+     
+     </td>    
+  </tr>
+</table> 
+
+
+    <div id="wrapper">
+
+
+ <div id="fade"></div>
+        <div id="modal"  class="modal hide ">
+            <img id="loader" src="../../images/loading.gif" />
+        </div>
+
+
+        <nav class="navbar-default navbar-static-side" role="navigation">
+            <div class="sidebar-collapse">
+                <ul class="nav metismenu " id="side-menu" 
+                                    style="padding-top: 10px;padding-bottom: 10px;">
+                    <li class="nav-header" style="padding-top: 10px;padding-bottom: 10px;">
+                        <div class="dropdown profile-element"> <span>
+                            <img alt="image" class="img-circle"  height="55" width="50"
+                            src="Foto" />
+                             </span>
+                            <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                            <span class="clear"> <span class="block m-t-xs"> 
+                            <strong class="font-bold text-muted">$NombreUsuario</strong>
+                             </span> <span class="text-muted text-xs block">
+                             Responsable de Nómina <b class="caret"></b></span> </span> </a>
+                            <ul class="dropdown-menu animated fadeInRight m-t-xs">
+                                <li><a href="#">Perfil</a></li>
+                                <li class="divider"></li>
+
+
+             <!-- SIGN OUT -->
+      <li class="xn-icon-button pull-right">
+        <a href="#" class="mb-control" data-box="#mb-signout"><span class="fa fa-sign-out"></span> Salir</a>                        
+      </li> 
+      <!-- END SIGN OUT -->
+
+
+
+                            </ul>
+                        </div>
+                        <div class="logo-element">
+                            Salud
+                        </div>
+                    </li>
+                    <li class="active">
+                        <a href="#">
+                          <i class="fa fa-th-large"></i> 
+                          <span class="nav-label">Productos de Nómina</span> 
+                          <span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+
+                 <li class="divider"></li>  <li><a href="ptfma_producto.php?quincenaurl=05&anioquincenaurl=2020" id="Q05">Quincena 05</a></li>
+                      <li class="divider" style=" background-color:#D8D8D8"> </li> <li><a href="ptfma_producto.php?quincenaurl=6&anioquincenaurl=2020" id="Q6">Quincena 6</a></li>
+                      <li class="divider" style=" background-color:#D8D8D8"> </li>
+<!--
+                        $ListaQuincenas                        
+-->
+                        </ul>
+                    </li>
+                </ul>
+
+            </div>
+        </nav>
+
+<!-- INI  TopNavBar -->
+
+ 	<div id="page-wrapper" class="gray-bg dashbard-1">
+        <div class="row border-bottom">
+        <nav class="navbar navbar-static-top" role="navigation" style="margin-bottom: 0">
+            <div class="navbar-header">
+                <a class="navbar-minimalize minimalize-styl-2 btn btn-primary" href="#">
+                    <i class="fa fa-bars"></i> 
+                </a>
+            </div>
+            <ul class="nav navbar-top-links navbar-right">
+                <li>
+                    <span class="m-r-sm text-muted welcome-message">
+                    Sistema de Recepción de Productos de Nómina</span>
+                </li>
+              <li class="dropdown">
+                
+                    <a id="buttonLockScreen" class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
+                        <i class="fa fa-lock"></i>  
+                        <span id="num-msgs" class="label label-primary"></span>
+                    </a>
+
+
+                </li>
+
+
+                <li class="dropdown">
+<!--
+                    <a id="enc-num-msgs" class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
+                        <i class="fa fa-bell"></i>  
+                        <span id="num-msgs" class="label label-primary"></span>
+                    </a>
+-->
+
+                </li>
+
+
+             <!-- SIGN OUT -->
+      <li class="xn-icon-button pull-right">
+        <a href="#" class="mb-control" data-box="#mb-signout"><span class="fa fa-sign-out"></span> Salir</a>                        
+      </li> 
+      
+  
+
+<!-- FIN  TopNavBar -->
+<!-- $PrimParte 
+        {% block primera_parte %}
+            
+            {% include 'productos/primera_parte.html' with rows=rows %}
+        {% endblock %}
+
+-->
+
+<!-- $Row1 
+        {% block detial %}
+   
+            {% include 'productos/row.html
+        {% endblock %}
+
+-->
+
+<script src="js/ssamx.js"></script>
+
+   <!-- Flot -->
+    <script src="js/plugins/flot/jquery.flot.js"></script>
+    <script src="js/plugins/flot/jquery.flot.tooltip.min.js"></script>
+    <script src="js/plugins/flot/jquery.flot.spline.js"></script>
+    <script src="js/plugins/flot/jquery.flot.resize.js"></script>
+    <script src="js/plugins/flot/jquery.flot.pie.js"></script>
+
+    <!-- Peity  -->
+    <script src="js/plugins/peity/jquery.peity.min.js"></script>
+    <script src="js/demo/peity-demo.js"></script>
+
+    <!-- Custom and plugin javascript  -->
+    <script src="js/inspinia.js"></script>
+    <script src="js/plugins/pace/pace.min.js"></script>
+
+    <!-- jQuery UI -->
+    <script src="js/plugins/jquery-ui/jquery-ui.min.js"></script>
+
+    <!-- GITTER -->
+    <script src="js/plugins/gritter/jquery.gritter.min.js"></script>
+
+    <!-- Sparkline -->
+    <script src="js/plugins/sparkline/jquery.sparkline.min.js"></script>
+
+
+    <!-- Sparkline demo data  -->
+    <script src="js/demo/sparkline-demo.js"></script>
+
+    <!-- ChartJS
+    <script src="../js/plugins/chartJs/Chart.min.js"></script>
+-->
+
+
+    <!-- Toastr -->
+    <script src="js/plugins/toastr/toastr.min.js"></script>
+    <!-- jqGrid -->
+    <script src="grid/js/plugins/jqGrid/i18n/grid.locale-en.js"></script>
+    <script src="grid/js/plugins/jqGrid/jquery.jqGrid.min.js"></script>
+
+<!--
+    <script src="../js/spinner.js"></script>
+-->
+
+     <!-- DROPZONE -->
+<!--
+    <script src="../js/plugins/dropzone/dropzone.js"></script>
+ -->
+<!--
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+
+  -->
+
+
+    <script>
+        $(document).ready(function() {
+
+
+    var randomScalingFactor = function() {
+      var dat=Math.round(Math.random() * 10000);
+      console.log(dat);
+      return dat;
+    };
+
+    var config = {
+      type: 'doughnut',
+      data: {
+        datasets: [{
+
+          data: [           ],          backgroundColor: [          ],          label: 'Dataset 1'        }],                   labels: [        ]      },
+
+      options: {
+        responsive: true,
+        legend: {
+          position: 'left',
+        },
+        title: {
+          display: false,
+          text: 'Lista URS'
+        },
+        animation: {
+          animateScale: true,
+          animateRotate: true
+        }
+      }
+    };
+
+
+      var ctx = document.getElementById("chart-area").getContext("2d");
+
+    var  myDoughnut = new Chart(ctx, config);
+
+
+
+
+
+
+
+
+
+               $("#tabla_errores").jqGrid({
+                url: 'ptfma_listar_errorres.php?callback=?&qwery=longorders',
+                datatype: "json",
+                mtype: "GET",
+                height: 400,
+                autowidth: true,
+                loadonce:true,
+                shrinkToFit: true,
+                rowNum: 50,
+                rowList: [50, 100, 150],
+                ajaxGridOptions: { contentType:'application/json;charset=utf-8',cache: false },
+                colNames: ['#', 'Campo', 'Total', 'Descripcion'],
+                colModel: [
+                    {name: 'numero_registro', index: 'numero_registro', width: 30, search:true, sorttype: "int",align: "right"},
+                    {name: 'campo', index: 'campo', width: 180,search:true, align: "left"},
+                    {name: 'evidencia', index: 'evidencia', width: 150,align: "left" },
+                    {name: 'descripcion', index: 'descripcion', width: 400, align: "left", },
+                ],
+                pager: "#pager",
+                viewrecords: true,
+                caption: "Información Actualizada",
+                hidegrid: false,
+                ondblClickRow: function(rowId) {
+                    var rowData = jQuery(this).getRowData(rowId);
+                    var errorNumero = rowData['numero_registro'];
+                    var errorDescripcion = rowData['descripcion'];
+                   // alert('errorNumero >' + errorNumero + '< errorDescripcion>' + errorDescripcion + '<');
+                },
+                onSelectRow: function(id){
+                    //alert(id);
+                    var rowData = jQuery(this).getRowData(id);
+                    var errorNumero = rowData['numero_registro'];
+                    var campo = rowData['campo'];
+                    var evidencia = rowData['evidencia'];
+                    var errorDescripcion = rowData['descripcion'];
+
+                    var varTagE = $(this).jqGrid("getGridParam", "TagEnvio");
+                    var varIdArchDatos = $(this).jqGrid("getGridParam", "archivo_datos");
+                    var varIdRemesa = $(this).jqGrid("getGridParam", "IdentificadorRemesa");
+
+                    console.log('Antes varTagE');
+                       console.log('varTagE >>' +varTagE);
+                       console.log('varIdArchDatos >>' +varIdArchDatos);
+                       console.log('varIdRemesa >>' +varIdRemesa);
+                    console.log('Despues varTagE');
+
+                    //alert('errorNumero >' + errorNumero + '< errorDescripcion>' + errorDescripcion + '< TagENvio >'+ TagEnvio  +'<');
+
+                    var ErrorHtml ='<table class="table table-bordered table-condensed table-striped" style"">' +
+                    '                                                    <tr>' +
+                    '                                    <th></th>' +
+                    '                                    <th></th>' +
+                    '                                </tr>' +
+                    '                                <tr>' +
+                    '                                   <td><font size="4">Error </font></td>' +
+                    '                                    <td><font size="4">' + campo +'</font></td>' +
+                    '                                </tr>' +
+                     '                               <tr>' +
+                      '                                  <td><font size="4">Total </font></td>' +
+                       '                                 <td><font size="4">' + evidencia + '</font></td>' +
+                        '                            </tr>' +
+                         '                           <tr>' +
+                          '                              <td><font size="4">Detalle </font></td>' +
+                           '                             <td><font size="4">' + errorDescripcion  +
+                            '                       </font><tr>  ' +
+                             '                  </table> ' ;
+
+
+
+                /** debug **/
+                                $.confirm({
+                                    icon: 'fa fa-exclamation-triangle fa-2x fa-fw',
+                                    title: 'SSAMX-00156',
+                                    content: ErrorHtml,
+                                    columnClass: 'medium',
+                                    animationSpeed:1600,
+                                    animationBounce:2.5,
+                                    closeAnimation:'scale',
+                                    containerFluid:false,
+                                    type: 'red',
+                                    buttons: {
+                                        Aceptar: {
+                                             btnClass: 'btn-green',
+                                             action:function () {
+                                              //$.alert('Proceso de Carga Aprobado');
+                                            }
+                                        },
+                                        cerrar:{
+                                          btnClass: 'btn-red',
+                                          action:function () {
+                                              //$.alert('Proceso de Carga Cancelado');
+                                          }
+                                        }
+                                    }
+                                });
+
+                    /*
+                        if(id && id!==lastsel3){
+                            jQuery('#rowed6').jqGrid('restoreRow',lastsel3);
+                            jQuery('#rowed6').jqGrid('editRow',id,true,pickdates);
+                            lastsel3=id;
+                        }
+                   */
+                }
+
+            }).navGrid("#pager",{edit:false,add:false,del:false});;
+
+
+
+
+
+            var doughnutData = [
+                {
+                    value: 300,
+                    color: "#a3e1d4",
+                    highlight: "#1ab394",
+                    label: "App"
+                },
+                {
+                    value: 50,
+                    color: "#dedede",
+                    highlight: "#1ab394",
+                    label: "Software"
+                },
+                {
+                    value: 100,
+                    color: "#A4CEE8",
+                    highlight: "#1ab394",
+                    label: "Laptop"
+                }
+            ];
+
+            var doughnutOptions = {
+                segmentShowStroke: true,
+                segmentStrokeColor: "#fff",
+                segmentStrokeWidth: 2,
+                percentageInnerCutout: 45, // This is 0 for Pie charts
+                animationSteps: 100,
+                animationEasing: "easeOutBounce",
+                animateRotate: true,
+                animateScale: false
+            };
+/**
+            var ctx = document.getElementById("doughnutChart").getContext("2d");
+            var DoughnutChart = new Chart(ctx).Doughnut(doughnutData, doughnutOptions);
+
+            var polarData = [
+                {
+                    value: 300,
+                    color: "#a3e1d4",
+                    highlight: "#1ab394",
+                    label: "App"
+                },
+                {
+                    value: 140,
+                    color: "#dedede",
+                    highlight: "#1ab394",
+                    label: "Software"
+                },
+                {
+                    value: 200,
+                    color: "#A4CEE8",
+                    highlight: "#1ab394",
+                    label: "Laptop"
+                }
+            ];
+
+            var polarOptions = {
+                scaleShowLabelBackdrop: true,
+                scaleBackdropColor: "rgba(255,255,255,0.75)",
+                scaleBeginAtZero: true,
+                scaleBackdropPaddingY: 1,
+                scaleBackdropPaddingX: 1,
+                scaleShowLine: true,
+                segmentShowStroke: true,
+                segmentStrokeColor: "#fff",
+                segmentStrokeWidth: 2,
+                animationSteps: 100,
+                animationEasing: "easeOutBounce",
+                animateRotate: true,
+                animateScale: false
+            };
+
+            var ctx = document.getElementById("polarChart").getContext("2d");
+            var Polarchart = new Chart(ctx).PolarArea(polarData, polarOptions);
+**/
+        });
+
+    </script>
+
+<script>
+
+var TagEnvio ='15-2020-05-20200217235324-5-F';
+
+
+</script>
+
+
+<script>
+
+$("body").click(function(e){
+  //archysapiens
+    var IdMsgs = e.target.id;
+    console.log('archysapiens >'+ IdMsgs +'< ');
+
+  //alert('>' + IdMsgs+ '<  >' );
+  //  alert(document.querySelector('#cargaotravez'));
+
+  if ((e.target.id==="cargaotravez" )|| (e.target.id==="cargaotravezicon")||(e.target.id==="cargaotravezspan"))
+   {
+       // alert('a cargar otra vez ');
+        //$('#x00').load("../ptfma_dropzone.php");
+        //window.open("ptma_opcd.php");
+        window.location.href = "ptma_opcd.php";
+   }
+
+}); //
+
+
+
+
+</script>
+
+
+
+<!-- $JS 
+			$JS
+-->
+
+<!-- Data Tables -->
+
+    <script src="js/plugins/dataTables/jquery.dataTables.js"></script>
+    <script src="js/plugins/dataTables/dataTables.bootstrap.js"></script>
+    <script src="js/plugins/dataTables/dataTables.responsive.js"></script>
+    <script src="js/plugins/dataTables/dataTables.tableTools.min.js"></script>
+
+
+<!-- SCRIPT  MODALLLL -->   
+
+<script>
+function Descargar(){
+  var grid = $('#tabla_errores');
+   var Archivo = grid.jqGrid('getGridParam', 'archivo_datos');
+   var Remesa = grid.jqGrid('getGridParam', 'IdentificadorRemesa');
+    console.log('Archivo>'+Archivo+'<');
+   console.log('Remesa>'+Remesa+'<');
+   window.location.href='reporte_excel.php?tagenvio='+TagEnvio+'&idremesa=' + Remesa +'&idarchivopn='+ Archivo;
+}
+</script> 
+
+
+
+
+<script>
+
+
+$('#buttonLockScreen').click(function(){
+    // Lockscreen
+    var mili = 1000;
+    var hrefUrlLockscreen = 'ptfma_desbloqueo_pantalla.php?lock=lock';                                               
+    $("body").load(hrefUrlLockscreen);
+    $("body").css({'background-color':'grey'});
+    setTimeout(function(){location.reload(); }, mili);
+
+    
+});
+
+
+
+/**
+var form = document.forms.namedItem("fileinfo");
+form.addEventListener('submit', function(ev) {
+
+      alert('addEventListener');
+      var
+        oOutput = document.getElementById("output"),
+        oData = new FormData(document.forms.namedItem("fileinfo"));
+
+      oData.append("CustomField", "This is some extra data");
+
+      console.log('Agrega CustomField');
+
+      var oReq = new XMLHttpRequest();
+
+      oReq.open("POST", "http://localhost/scratch/test_httpr.php", true);
+
+      oReq.onload = function(oEvent) {
+        if (oReq.status == 200) {
+          oOutput.innerHTML = "Uploaded!";
+        } else {
+          oOutput.innerHTML = "Error " + oReq.status + " occurred uploading your file.<br \/>";
+        }
+      };
+
+      oReq.send(oData);
+      ev.preventDefault();
+    }, false);
+          
+**/
+
+        var mili = 10000;
+        timer = setTimeout("tiempo()", mili);
+        function tiempo() {
+            var d = new Date();
+            var n = d.getTime();
+            //alert('Temporalizador');
+            timer = setTimeout("tiempo()", mili);
+            console.log('Mandando a llamar a servidor');
+            var avance = $('#barravalidacion').width();
+            var incremento = avance + 5;
+            var var_estatus_interfaz = $('#ban_envio_remesa').val();
+            var var_ant_ban_calculo_remesa = 0 ;
+            var var_act_ban_calculo_remesa = 0;
+
+            console.log('var_estatus_interfaz >'+ var_estatus_interfaz +'<' );
+
+            if (var_estatus_interfaz == 'envio'){
+               $.post("ptfma_obten_indicador_fin_remesa.php", { 
+                        remesa: $NumeroRemesa, 
+                        idorganismo: '$IdOrganismo' 
+                    }
+                    )
+                    .done(function( data ) {
+                      if(data > 0){
+                        var_ant_ban_calculo_remesa = $('#ban_calculo_remesa').val();
+                        var_act_ban_calculo_remesa = data;
+                        console.log('analisando/var_ant_ban_calculo_remesa >' + var_ant_ban_calculo_remesa +'< var_act_ban_calculo_remesa >'+ var_act_ban_calculo_remesa +'< var_estatus_interfaz >'+var_estatus_interfaz+'<');
+                        if (var_ant_ban_calculo_remesa == var_act_ban_calculo_remesa){
+                          var QnaEnvio = $('#quincena_envio option:selected').val();
+                          var AnioEnvio= $('#anio_envio option:selected').val();
+                          var DatosRemesa = TagEnvio.split('-');
+                          var Org = DatosRemesa[0];
+                          var AnioProc = DatosRemesa[1];
+                          var QnaProc = DatosRemesa[2];
+
+                              $.post("ptfma_obten_resultado_envio.php", { 
+                                  TagEnvio: TagEnvio, 
+                                  anio_envio: AnioEnvio ,
+                                  quincena_envio: QnaEnvio,
+                                  anio_proc:AnioProc,
+                                  quincena_proc:QnaProc,
+                                  organismo:Org
+
+                              }
+                              )
+                              .done(function( data ) {
+                                  //console.log("ptfma_obten_notificacion/Data Loaded: " + data );
+                                  $('#main_page').html(data);
+                              });
+                        }// fin if 
+                        $('#ban_calculo_remesa').val(data);
+                      }  
+                   });
+
+              }// fin de if (var_estatus_interfaz
+        }// fin de function tiempo()
+
+
+
+
+
+        $('#ul-msgs').click(function(){
+                //alert('click en UL');
+        });   
+
+        $('div').click(function(event){
+            var PattrMsgs = new RegExp(/^[0-9]{14}-[0-9]{4}/);
+            var Msg = event.target.id;
+            
+            if(PattrMsgs.test(Msg)){
+               // alert('Identificador aceptado >>'+Msg + '<<');
+
+              $.post("ptfma_despliega_resultado.php", 
+                { 
+                    credencial: Msg, 
+                    idorganismo: '15' 
+                }
+                )
+                .done(function( data ) {
+                    var UbicacionPanel = Msg.split('-');
+                    var Panel = UbicacionPanel[4];
+                    //alert('panel >>'+ Panel +'<<');
+                    console.log('panel >>'+ Panel +'<<');
+                    switch(Panel){
+                      case '1': //alert('Primer panel');
+                                $('#main_page').html(data);
+                                break;
+                      case '2': //alert('Segundo panel');
+                                $('#productos-nomina-archivos_416').html(data);
+                                break;
+                      case '3': //alert('Tercer panel');
+                                $('#productos-nomina-archivos_610').html(data);
+                                break;
+                      case '4': //alert('Cuarto panel');
+                                $('#productos-nomina-archivos_pdf').html(data);
+                                break;
+                    }// switch
+
+                    console.log("Data Loaded: " + data );
+                    //$('#num-msgs').text(data);
+                    //alert(data);
+                    //alert('en el done >>'+Msg+'<<');
+
+                });
+          }// FIN DEL if(PattrMsgs.test(Msg))
+
+        });
+
+/*****************************
+ * SECCIONDE ENVIO REMESAS
+ *
+ *****************************/
+  $('#header_proceso_remesa').on('click', 'button', function(event){
+        var IdBtn = event.target.id;
+        var EnviaRemesa = new RegExp(/_/);
+        var Estados = new RegExp(/(09|df|DF)/);
+
+        //alert(IdBtn+'test '+EnviaRemesa.test(IdBtn));
+        var QnaEnvio = $('#quincena_envio option:selected').val();
+        var AnioEnvio= $('#anio_envio option:selected').val();
+
+        //alert('QnaEnvio >'+QnaEnvio +'< AnioEnvio>' + AnioEnvio + '<');
+
+        if(EnviaRemesa.test(IdBtn)){
+            //alert('Se envia la remesa >' + IdBtn +'<' );
+
+             //openModal();
+             console.log('Preparando el envio');
+
+             $('#myModal4').modal('show');
+
+             //console.log('Despues del myModal4');
+
+            var EnvioRemesa = new XMLHttpRequest();
+            var FrmEnvioRemesa = new FormData();
+
+            EnvioRemesa.onreadystatechange = function () {
+            if (EnvioRemesa.readyState == 4 && EnvioRemesa.status == 200) {
+                //closeModal();
+                $('#myModal4').modal('hide');
+              }
+            }
+            $('#ban_envio_remesa').val('envio');
+
+            var DatosRemesa = TagEnvio.split('-');
+            var Org = DatosRemesa[0];
+            var AnioProc = DatosRemesa[1];
+            var AnaProc = DatosRemesa[2];
+
+            console.log('lanzando Org >' + Org + '<');
+
+            FrmEnvioRemesa.append("TagEnvio", TagEnvio);
+            FrmEnvioRemesa.append("anio_envio", AnioEnvio);
+            FrmEnvioRemesa.append("quincena_envio", QnaEnvio);
+
+            FrmEnvioRemesa.append("anio_proc", AnioProc);
+            FrmEnvioRemesa.append("quincena_proc", AnaProc);
+            FrmEnvioRemesa.append("organismo", Org);
+
+              console.log('header_proceso_remesa TagEnvio >'+TagEnvio);
+              console.log('header_proceso_remesa AnioEnvio >'+AnioEnvio);
+              console.log('header_proceso_remesa QnaEnvio >'+QnaEnvio);
+
+            // Se va a proponer el panel para la 
+            // revision de las Directivas de Control presupuestal
+
+            //EnvioRemesa.open("POST","/ptma_opcd/ptfma_envia_remesa_info.php",false);
+            EnvioRemesa.open("POST","/ptma_opcd/ptfma_valida_dcp.php",false);
+/**
+            EnvioRemesa.send(FrmEnvioRemesa);
+            var RespuestaEnvioRemesa=EnvioRemesa.responseText;
+            $('#main_page').html(RespuestaEnvioRemesa);
+            $('#myModal4').modal('hide');
+**/
+
+/**
+            if(!Estados.test(Org))
+              console.log('Este es un estado >'+Org+'<');
+
+
+            else
+            window.location.href = '/ptma_opcd/ptfma_producto_dcp.php';
+**/           
+
+              window.location.href = '/ptma_opcd/ptfma_producto_dcp_a74.php';
+
+           
+        }//fin del 
+     }
+  );
+
+
+  $('#header_proceso_remesa').on('mousedown', 'button', function(event){
+        var IdBtn = event.target.id;
+        var EnviaRemesa = new RegExp(/_/);
+        //alert(IdBtn+'test '+EnviaRemesa.test(IdBtn));
+        var QnaEnvio = $('#quincena_envio option:selected').val();
+        var AnioEnvio= $('#anio_envio option:selected').val();
+
+        //alert('QnaEnvio >'+QnaEnvio +'< AnioEnvio>' + AnioEnvio + '<');
+
+        if(EnviaRemesa.test(IdBtn)){
+             //alert('Se envia la remesa >' + IdBtn +'<' );
+             //openModal();
+
+             //console.log('mousedown/antes del myModal4');
+             //$('#myModal4').modal('show');
+             //console.log('mousedown/Despues del myModal4');
+             $( "#enviar_remesa" ).trigger( "click" );
+        }//fin del  if
+        return false;
+
+     }
+  );
+
+
+
+/*****************************
+ * SECCIONDE OPERACIONES
+ *
+ *****************************/
+  $('#tabla_remesa').on('mousedown', 'button', function(event){
+
+      var IdBtn = event.target.id;
+      var ArrIdBtn = IdBtn.split("@");
+      var IdRemesa = ArrIdBtn[1];
+      var IdArchivoPN = ArrIdBtn[2];
+
+     // alert('mousedown >' + IdBtn +'< ' +' >' +event.relatedTarget +'< ' );
+
+     // $('#myModal4').modal('show')  ;
+     // console.log('#myModal4 show') ;  
+
+     // $(IdBtn).[0]('click');
+
+ //console.log('#tabla_remesa/find(IdBtn)/trigger') ;  
+ //    $('#tabla_remesa').find(IdBtn).trigger('click');
+    
+//     event.cancelBubble = true;
+ //    return false;
+    }
+    );
+
+
+
+
+
+    $('#tabla_remesa').on('click', 'a', function(event){
+      var IdBtn = event.target.id;
+      var ProcesaFin      = new RegExp(/fin_[0-9]{1,6}/);
+      var ProcesaResumen      = new RegExp(/resu_[0-9]{1,4}/);
+
+      console.log('#tabla_remesa/IdBtn >>'+IdBtn );
+      var ArrIdBtn = IdBtn.split("_");
+      var IdRemesa = ArrIdBtn[1];
+      console.log('#tabla_remesa/IdRemesa >>'+IdRemesa );
+      var IdArchivoPN = ArrIdBtn[3];
+      console.log('#tabla_remesa/IdArchivoPN >>'+IdArchivoPN );
+      var ArrTagEnvio = TagEnvio.split("-");
+      var QuincenaProceso =ArrTagEnvio[2];
+      var Qna =ArrTagEnvio[2];
+      var Anio =ArrTagEnvio[1];
+
+     // alert('botton >' + IdBtn +'< ' );
+
+
+/**
+      if(ProcesaFin.test(IdBtn)){
+          alert('Uso Futuro');
+      }
+      else **/
+        if(ProcesaResumen.test(IdBtn) || ProcesaFin.test(IdBtn)){
+
+        console.log('Ingreando a emision de Certificado');
+        var Contenido='url:ptfma_resumen_qa.php?remesa='+IdRemesa+'&archivo='+ IdArchivoPN + '&qna='+ Qna + '&anio=' + Anio; 
+
+          $.confirm({
+              icon: 'fa fa-check-square fa-2x fa-fw',
+              title: 'SSAMX-REPORTE PREVIO DEL PRODUCTO ',
+              content: Contenido,
+              columnClass: 'large',
+              animationSpeed:900,
+              animationBounce:2.5,
+              closeAnimation:'scale',
+              containerFluid:false,
+              theme: 'material',
+              type: 'green',
+              buttons: {
+                  Imprimir: {
+                       btnClass: 'btn-green',
+                       action:function () {
+                        //$.alert('Proceso de Carga Aprobado');                            
+                        var ContenidoAjax='ptfma_resumen_qa.php?remesa='+IdRemesa+'&archivo='+IdArchivoPN+'&qna='+Qna + '&anio=' + Anio; 
+                        var Resultado='sIN aJAX';
+                        $.ajax({
+                            url: ContenidoAjax,
+                            type: "GET",
+                            async: false,
+                            success: function (data) {
+                              Resultado=data;
+                            }
+                        });
+                        var w = window.open();
+                        var html = '<!DOCTYPE HTML>';
+                        html += '<html lang="en-us">';
+                        html += '<head>';
+                        html += '</head>';
+                        html += '<body>';
+                        html += '<h1> SSAMX-REPORTE PREVIO DEL PRODUCTO </h1>' + Resultado;
+                        html += '<canvas ID=QR width="400" height="400"></canvas>';
+                        html += '' ;
+                        html += '</body>';
+                        w.document.write(html);
+                        w.window.print();
+                        w.document.close();
+                      }
+                  },
+                  cerrar:{
+                    btnClass: 'btn-red',
+                    action:function () {
+                        //$.alert('Proceso de Carga Cancelado');
+                    }
+                  } 
+              } // fin de buttons
+          });
+          return false;
+
+      }
+      else{   
+          
+          var newUrl= 'ptfma_listar_errorres.php?callback=?&qwery=longorders&tagenvio='+ TagEnvio+'&idremesa=' + IdRemesa +'&idarchivopn='+ IdArchivoPN  + '&tipo_reporte=g1'; 
+          var newUrl2='reporte_excel.php?tagenvio='+ TagEnvio+'&idremesa=' + IdRemesa +'&idarchivopn='+ IdArchivoPN +'&tipo_reporte=g1';
+
+          $('#tabla_errores').setGridParam({url:newUrl,datatype:"json",page:1});
+          $('#tabla_errores').setGridParam({archivo_datos:IdArchivoPN,datatype:"json",page:1});
+          $('#tabla_errores').setGridParam({IdentificadorRemesa:IdRemesa,datatype:"json",page:1});
+          
+          $('#tabla_errores').setGridParam({TagEnvio:TagEnvio,IdRemesa,datatype:"json",page:1});
+          $('#tabla_errores').setGridParam({IdentificadorRemesa:IdRemesa,datatype:"json",page:1});
+          $('#tabla_errores').setGridParam({IdentificadorRemesa:IdRemesa,datatype:"json",page:1});
+
+          $('#tabla_errores').trigger('reloadGrid');
+          $('#modal_titulo').html('Quincena :'+ QuincenaProceso +' Archivo Analizado :'+IdArchivoPN);
+          $('#registros_error').modal('show');
+      }
+  }
+    );
+
+
+    $('button').on('click', 'button', function(event){
+
+      alert('llegando al click' );
+      console.log('llegando al click' );
+    });
+
+
+    $('#tabla_remesa').on('click', 'button', function(event){
+        var IdBtn = event.target.id;
+
+        var IdBtnSpin = '#ico'+IdBtn.substring(3, 60);
+        console.log('#tabla_remesa/IdBtn >'+IdBtn+'<');
+        console.log('#tabla_remesa/IdBtnSpin >'+IdBtnSpin+'<');
+
+        var QnaEnvio = $('#quincena_envio option:selected').val();
+        var AnioEnvio= $('#anio_envio option:selected').val();
+
+        var ProcesaEliminar      = new RegExp(/eli_[0-9]{1,6}/);
+        var ProcesaAnalizar      = new RegExp(/ana_[0-9]{1,6}/);
+        var ProcesaInformar      = new RegExp(/eli_[0-9]{1,6}/);
+        var ProcesaEnviarArchivo = new RegExp(/env_[0-9]{1,6}/);
+        
+       // alert(IdBtn);
+        var ArrIdBtn = IdBtn.split("_");
+        var IdRemesa = ArrIdBtn[1];
+        var IdArchivoPN = ArrIdBtn[3];
+        var Execute =0;
+
+        var IdSelect = '#'+IdRemesa+'_'+TagEnvio.toLowerCase()+'_'+IdArchivoPN+'  option:selected';
+        var IdSelectValor =$(IdSelect).val();
+
+        //var IdSelectValor =$(IdSelect).text();
+
+        console.log('IdArchivoPN >>'+ IdArchivoPN +'<<');
+        console.log('IdSelect >>'+IdSelect +'<<');
+        console.log('IdSelectValor >>'+IdSelectValor +'<<');
+
+//        $('#registros_error').modal('show');
+
+
+
+// INICIA CORTE
+
+        var OperacionArchivosPN = new XMLHttpRequest();
+        var FrmArchivosPN = new FormData();
+
+
+
+          OperacionArchivosPN.onreadystatechange = function() {
+               // Colocar icono Loading
+/**            
+              var LoadingIcon ='<div class="ibox ">        <div class="ibox-title"> <h5>Wave</h5></div> <div class="ibox-content"><div class="spiner-example">  <div class="sk-spinner sk-spinner-wave"><div class="sk-rect1"></div><div class="sk-rect2"></div><div class="sk-rect3"></div><div class="sk-rect4"></div>     <div class="sk-rect5"></div></div> </div></div> </div>';
+              console.log('dentro del onreadystatechange >'+LoadingIcon+'<');
+              $('#tablamain').html(LoadingIcon);
+**/
+             $('#myModal4').modal('hide');
+              console.log('#myModal4 hide');
+
+          };
+
+
+        FrmArchivosPN.append("TagEnvio", TagEnvio);
+        FrmArchivosPN.append("idremesa", IdRemesa);
+        FrmArchivosPN.append("idarchivopn", IdArchivoPN);
+        FrmArchivosPN.append("pn", IdSelectValor);
+        FrmArchivosPN.append("quincena_envio", QnaEnvio);
+        FrmArchivosPN.append("anio_envio", AnioEnvio);
+        
+
+        OperacionArchivosPN.open("POST", "/ptma_opcd/ptfma_cruda_archivo.php", false);
+
+
+
+        // 10-nov       alert('botton >' + IdBtn +'< estatus >' + ProcesaEliminar.test(IdBtn) +'<');
+        //  alert('botton >' + IdQna +'< estatus >' + ProcesaAnalizar.test(IdQna) +'<');
+
+
+
+
+        if(ProcesaEliminar.test(IdBtn)){
+            //alert('botton Eliminar >' + IdBtn +'<' );
+            FrmArchivosPN.append("operacion", 'eliminar');
+            Execute =1;
+
+
+        }
+        else
+          if(ProcesaAnalizar.test(IdBtn)){
+            console.log('botton Analizar >' + IdBtn +'< y spin ico');
+            FrmArchivosPN.append("operacion", 'analizar');
+            //$(IdBtnSpin).addClass('fa-spin');
+
+            Execute =1;
+          }
+          else
+              if(ProcesaInformar.test(IdBtn)){
+                alert('botton Informar >' + IdBtn +'<' );
+                FrmArchivosPN.append("operacion", 'informar');
+                Execute =1;
+              }
+              else
+                  if(ProcesaEnviarArchivo.test(IdBtn)){
+                    console.log('botton ProcesaEnviarArchivo >' + IdBtn +'<' );
+                    FrmArchivosPN.append("operacion", 'enviar');
+                    Execute =1;
+                  }
+                  else
+                    console.log('No se identifica el boton'+ IdBtn +'<');
+               
+        // fin del if test
+        if(Execute ==1){
+              OperacionArchivosPN.send(FrmArchivosPN);
+              var RespuestaCRUDA=OperacionArchivosPN.responseText;
+
+              //console.log('RespuestaCRUDA >>'+RespuestaCRUDA +'<<');
+
+              $('#tablamain').html(RespuestaCRUDA);
+              var regtabla=$('#tabla_pn  tr').length;
+              console.log('regtabla >'+regtabla+'<');
+              $('#num_archivos_remesa').html(regtabla);
+        } // fin de if(Execute ==1)     
+
+// FIN CORTE
+
+    } );
+
+
+
+		$('a').click(function(event){
+      var IdQna = event.target.id;
+      var reg = new RegExp(/^Q[0-9]{1,3}/);
+      //alert('Alguien Pulso >' + IdQna +'< estatus' + reg.test(IdQna) );
+       console.log('Alguien Pulso >' + IdQna +'< estatus' + reg.test(IdQna) );
+
+      if( reg.test(IdQna)){
+          //alert('Elejiste ' + IdQna);
+          //$('#page-wrapper').load( "dashboard.php" );
+          if( IdQna == 'Q100'){
+              // Estas instrucciones pueden ser actualizadas a futuro.
+                  var varhtml ='?'+ $('#' + IdQna ).attr('href');
+              //    alert('varhtml >' + varhtml + '< ');
+                  console.log('varhtml >' + varhtml + '< ');
+                  $('#main_page').load( "ptfma_producto_historico.php"+ varhtml);
+                return false;
+          }    
+        }
+        else {
+            if(IdQna == 'Qhis' )
+             {   
+              // alert('antes');
+              var varhtml ='?'+ $('#' + IdQna ).attr('href');
+            //  alert('varhtml >' + varhtml + '< ');
+              console.log('varhtml >' + varhtml + '< ');
+              $('#main_page').load( "ptfma_producto_historico.php"+ varhtml);
+            return false;
+            }
+            else{
+              if(IdQna == 'cali'){
+             // alert('hola');
+             
+                //$('#main_page').load("ptfma_validacion.php");
+                var varhtml = $('#' + IdQna ).attr('href');
+                //alert(varhtml);
+                if(varhtml == 1){
+                  $('#mostrarmodal1').modal('show');
+                   return false;
+                }
+                else{
+//redireccionarrr
+                window.location.href = "../logout.php";
+                return false;
+                }
+               
+              }
+            }
+            
+            }
+        } // fin de if( reg.test(IdQna))
+      
+    );
+
+        $('#SelectArchivoProducto').click(function(){
+            $('#SelectArchivoProductoBase').click();
+            //$('#Enviar').click()
+
+/**
+                var form = document.forms.namedItem("fileinfo");
+                var file_data = document.getElementById('#SelectArchivoProductoBase');   
+                var archivo =file_data.files[0].name;
+                alert('Tamanio >>'+ file_data.length +'<<')
+                var datos='';
+                for (var x = 0; x < file_data.length; x++) {
+                  datos= datos + file_data[x].name + '<bR>';
+                }
+                alert(datos);
+**/
+
+                //var form_data = new FormData();                  
+                //form_data.append('file', file_data);
+                //alert(form_data);  
+/**
+                var formData = new FormData();
+                formData.append("username", "Noe Alvarez");
+                formData.append("accountnum", "123456");
+                var request = new XMLHttpRequest();
+                request.open("POST", "http://localhost/scratch/test_httpr.php");
+                request.send(formData);
+**/
+
+            }
+        );
+
+
+
+
+</script>
+<script type="text/javascript">
+
+$( "body" ).on( "click", "a", function() {
+  console.log( $( this ).text() );
+  console.log( 'body');
+  //return false;
+});
+
+
+
+    function hablitaAnalisis(IdSelect){
+      var IdBoton ='#btnana_'+IdSelect;
+      var ProdNom=$(IdSelect).val();
+      console.log('Select >'+ ProdNom +'<');
+      console.log('Select >'+ IdBoton+'<');
+
+      //$(IdBoton).attr('disabled', false);
+      $(IdBoton).removeAttr('disabled');
+
+    }// fin de hablitaAnalisis
+
+
+      var loading = $("#loadingtest"); 
+
+      $(document).ajaxStart(function () {
+            loading.show();
+            
+
+            //$('#tablamain').html('<h1> Procesando,... </h>');
+
+            console.log('ajaxStart');
+        });
+
+        $(document).ajaxStop(function () {
+            loading.hide();
+            console.log('ajaxStop');
+        });
+
+
+
+
+
+    function makeFileList() {
+      var input = document.getElementById("SelectArchivoProductoBase");
+      var ul = document.getElementById("fileList");
+
+      var form = document.forms.namedItem("fileinfo");
+
+      //alert(TagEnvio);
+      oData = new FormData(document.forms.namedItem("fileinfo"));
+      oData.append("CustomField", "This is some extra data");
+      console.log('Agrega CustomField');
+      try{
+      while (ul.hasChildNodes()) {
+        ul.removeChild(ul.firstChild);
+      }
+      }catch(err){      alert(err.message);      }
+      
+      console.log('input.files.length >>'+ input.files.length +'<<');
+      if( input.files.length == 1){
+          console.log('Entró con length 1');
+
+          for (var i = 0; i < input.files.length; i++) {  
+            if(i==0){
+              var Archivo1 = input.files[i].name;
+              var ArrArchivoZip = Archivo1.split(".");
+              var NomArchZip =ArrArchivoZip[0];
+              var ArrArchivoExtZip = ArrArchivoZip[1];
+              var BanderaGuion=0;
+              if( (NomArchZip.indexOf('_')) > 0 || (NomArchZip.indexOf('-') > 0 ) ){
+                    $.alert({
+                    icon: 'fa fa-exclamation-triangle fa-2x fa-fw',
+                    title: 'Nombre de Archivo Incorrecto',
+                    content: '<h1> El nombre del archivo <strong>'+ Archivo1 + ' </strong>  no debe tener guión bajo(_)/medio(-) </h1>',
+                    columnClass: 'medium',
+                    animationSpeed:600,
+                    animationBounce:1,
+                    closeAnimation:'scale',
+                    type: 'red',
+                    buttons: {
+                        Aceptar: {
+                             btnClass: 'btn-green',
+                             action:function () {
+                            }
+                        }
+                    }
+                    });
+                BanderaGuion=1;
+              }
+            } 
+            console.log('NomArchZip >'+NomArchZip +'< ArrArchivoExtZip >' +ArrArchivoExtZip+'<');
+          }// fin de primer for
+
+          //alert('1 >>'+NomArch1.valueOf() +'<< >>'+NomArch2.valueOf() +'<<');
+
+          if ( (ArrArchivoExtZip == 'zip' || ArrArchivoExtZip=='rar') && (BanderaGuion==0 ) ){
+              // Validar si existe archivo
+
+            for (var i = 0; i < input.files.length; i++) {  
+               var NomArchivo = input.files[i].name
+               var ExisteArchivo = new XMLHttpRequest();
+
+               var FrmExiste = new FormData();
+               FrmExiste.append("TagEnvio", TagEnvio);
+               FrmExiste.append("archivo_existe", NomArchivo);
+               ExisteArchivo.open("POST", "/ptma_opcd/ptfma_existe_archivo.php", false);
+               ExisteArchivo.send(FrmExiste);
+               var RespuestaExiste=ExisteArchivo.responseText;
+               console.log('RespuestaExiste >>'+RespuestaExiste +'<<');
+
+               if(RespuestaExiste==0){
+                    console.log('El Archivo >>'+NomArchivo +'<< se registra');
+               }  
+               else{
+                    console.log('El Archivo >>'+NomArchivo +'<< ya existe');
+                    break;
+               }
+             }// fin de for para validar existencia
+
+             if(RespuestaExiste==0){
+              console.log('Iniciando #myModal4');
+              $('#myModal4').modal('show');
+              console.log('Terminando #myModal4');
+
+              for (var i = 0; i < input.files.length; i++) {
+                var oReq = new XMLHttpRequest();
+                var li = document.createElement("li");
+
+                li.innerHTML = input.files[i].name;
+                ul.appendChild(li);
+                
+                oReq.onreadystatechange = function () {
+                        if (oReq.readyState == 4 && oReq.status == 200) {
+                            $('#myModal4').modal('hide');
+                            //document.getElementById("myModal4").innerHTML=oReq.responseText;
+                            console.log('onreadystatechange/oReq.responseText');
+                        }
+                    }
+
+
+                oOutput = document.getElementById("output");
+                oData.append("afile"+i, input.files[i]);
+                console.log(input.files[i]);
+                var formData = new FormData();
+                formData.append("TagEnvio", TagEnvio);
+                formData.append("producto_nomina", input.files[i]);
+
+                //oReq.open("POST", "/ptma_opcd/ptfma_registra_archivo.php", false);
+                //oReq.send(formData);
+
+
+               $.ajax({
+                    type:'POST',
+                    url:'/ptma_opcd/ptfma_registra_archivo.php',
+                    processData: false,
+                    contentType: false,
+                    async: false,
+                    cache: false,
+                    data : formData,
+                    success: function(response){
+                      console.log('response >'+response+'<');
+                      // 18-dic-2017
+                      $('#tablamain').html(response);
+
+                      $('#myModal4').modal('hide');
+                    }
+                });
+
+
+
+                console.log(oReq.getAllResponseHeaders());
+                // console.log(oReq.responseText);
+
+                //18-dic-2017 $('#tablamain').html(oReq.responseText);
+                
+
+                var regtabla=$('#tabla_pn  tr').length;
+                // console.log('regtabla >'+regtabla+'<');
+                $('#num_archivos_remesa').html(regtabla);
+
+
+                oReq.onload = function(oEvent) {
+                  if (oReq.status == 200) {
+                      oOutput.innerHTML = "Uploaded!" +i;
+                      console.log('Uploaded!' + i);
+                  } else {
+                      oOutput.innerHTML = "Error " + oReq.status + " occurred uploading your file.<br \/>";
+                      console.log('Error' +oReq.status + 'occurred uploading your file.<br>');
+                  }
+                }; // fin de oReq.onload = function(oEvent) 
+
+              }// fin del for
+            }else{
+                //alert('El archivo ya existe');  
+               $.alert({
+                    icon: 'fa fa-exclamation-triangle fa-2x fa-fw',
+                    title: 'Ya existe el archivo',
+                    content: '<h1> Ya existe archivo en la Plataforma</h1>',
+                    columnClass: 'medium',
+                    animationSpeed:600,
+                    animationBounce:1,
+                    closeAnimation:'scale',
+                    type: 'red',
+                    buttons: {
+                        Aceptar: {
+                             btnClass: 'btn-green',
+                             action:function () {
+                            }
+                        }
+                    }
+                });
+            }
+          }
+          else{
+                //alert('Los nombres aceptados son :.zip');  
+                if(BanderaGuion == 0)
+                      $.alert({
+                      icon: 'fa fa-exclamation-triangle fa-2x fa-fw',
+                      title: 'Error de Tipo',
+                      content: '<h1> Los archivos aceptados son :.zip</h1>',
+                      columnClass: 'medium',
+                      animationSpeed:600,
+                      animationBounce:1,
+                      closeAnimation:'scale',
+                      type: 'red',
+                      buttons: {
+                          Aceptar: {
+                               btnClass: 'btn-green',
+                               action:function () {
+                              }
+                          }
+                      }
+                  });
+          }
+      }
+      else{
+          //alert('Debe Seleccionar solo un archivo comprimido (.zip)');
+          $.alert({
+          icon: 'fa fa-exclamation-triangle fa-2x fa-fw',
+          title: 'Numero Archivos',
+          content: '<h1> Debe Seleccionar solo un archivo comprimido (.zip)</h1>',
+          columnClass: 'medium',
+          animationSpeed:600,
+          animationBounce:1,
+          closeAnimation:'scale',
+          type: 'red',
+          buttons: {
+              Aceptar: {
+                   btnClass: 'btn-green',
+                   action:function () {
+                  }
+              }
+          }
+      });
+
+      }
+      if(!ul.hasChildNodes()) {
+        var li = document.createElement("li");
+        li.innerHTML = 'No Files Selected';
+        ul.appendChild(li);
+      }
+      form.reset();
+    }
+  </script>
+
+<script>
+
+function showMsg(){
+
+    console.log('showMsg  ');
+}
+</script>
+
+
+
+
+<script>
+    /* MESSAGE BOX */
+      $(".mb-control").on("click",function(){
+        var box = $($(this).data("box"));
+        if(box.length > 0){
+          box.toggleClass("open");
+          
+          var sound = box.data("sound");
+          
+          if(sound === 'alert')
+            playAudio('alert');
+          
+          if(sound === 'fail')
+            playAudio('fail');
+          
+        }        
+        return false;
+      });
+
+
+      $(".mb-control-close").on("click",function(){
+         $(this).parents(".message-box").removeClass("open");
+         return false;
+      });    
+    /* END MESSAGE BOX */
+    /* PLAY SOUND FUNCTION */
+      function playAudio(file){
+        if(file === 'alert')
+          document.getElementById('audio-alert').play();
+
+        if(file === 'fail')
+          document.getElementById('audio-fail').play();    
+      }
+    /* END PLAY SOUND FUNCTION */
+  </script>
+  
+ <!-- 
+<script src="https://framework-gb.cdn.gob.mx/gobmx.js"></script>
+-->
+
+
+
+</body>
+</html>
+
+	
