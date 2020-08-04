@@ -71,13 +71,15 @@ public class MainController {
 				@RequestParam(name="QuincenaUrl", required=true, defaultValue="00") String QuincenaUrl, 
 				@RequestParam(name="AnioQuincenaUrl", required=true, defaultValue="00") String AnioQuincenaUrl,
 				Model model) {
-		 String idState="debug";
+		String idState="debug";
+		String header="debug";
 		model.addAttribute("name", userId);
 		model.addAttribute("passwd", passwd);
 		
 		List<SesionRepo.SesionDTO> sessionData = session.findByUser(userId, passwd);
 		
 		if (!sessionData.isEmpty()){
+			log.info("sessionData  ");
 			for (SesionRepo.SesionDTO sesionDTO : sessionData) {
 				log.info("route =>{}- {}-{}-{} ",sesionDTO.getId(), sesionDTO.getNombre_usuario(), sesionDTO.getApp_paterno(),sesionDTO.getApp_materno());
 				model.addAttribute("nombre_usuario", sesionDTO.getNombre_usuario());
@@ -87,10 +89,10 @@ public class MainController {
 				model.addAttribute("id_roles", sesionDTO.getId_roles());
 				model.addAttribute("id_state", sesionDTO.getId());
 				model.addAttribute("state", sesionDTO.getOrganismo());
-				model.addAttribute("photo", sesionDTO.getFoto());
+				//model.addAttribute("photo", sesionDTO.getFoto());
+				model.addAttribute("photo", "images/avatar_2x.png");
 				model.addAttribute("id", sesionDTO.getIdusu());
 				idState = sesionDTO.getId();
-				 
 			}	
 		}
 		List<SesionRepo.QnaDTO> qnaData;
@@ -115,11 +117,12 @@ public class MainController {
 					String idStateLoc= idState; //model.getAttribute("id_state").toString();
 					log.info("anio =>{} qna {} id_state {}", anio,qna, idStateLoc);
 					
-					String header = String.format("%s@%s@%s@%s@%s@", anio, qna,
+				    header = String.format("%s@%s@%s@%s@%s@", anio, qna,
 							qnaDTO.getFecha_limite().toString(),
 							String.valueOf(qnaDTO.getMax_quincena()) ,
 							qnaDTO.getMax_limite().toString() );
 					log.info("header =>{} ", header);
+					log.info("findByAnioQnaDet =>{} =>{}=>{}", anio, qna,idStateLoc );
 					
 					List<SesionRepo.AnioQnaDTO> qnaDetal = session.findByAnioQnaDet(Integer.parseInt(anio), 
 							Integer.parseInt(qna),idStateLoc);
@@ -128,23 +131,26 @@ public class MainController {
 					log.info("Despues del List<SesionRepo.AnioQnaDTO>");
 					
 					if(!qnaDetal.isEmpty()) {
-						qnaDetal.forEach(y->{
-							log.info("qnaDataDetalle =>{}", 
-									String.valueOf(y.getId())); 
-							/**
-							log.info("qnaDataDetalle =>{}-{}- {}-{}-{} {}-{}- {}-{}-{}", 
-									String.valueOf(y.getId()),y.getAssign_date().toString(),
-									y.getUpdate_date().toString(), y.getId_state(), 
-									y.getStat(), String.valueOf(y.getId_files()),
-									String.valueOf(y.getAnio()), String.valueOf(y.getQna()),
-									y.getDescription(), y.getArt74_fed());
-						**/			 
 						
-						});
-				
+						for (SesionRepo.AnioQnaDTO qnaDTO2 : qnaDetal) {
+							header = String.format("%s|%s@%s|A", header, 
+									String.valueOf(qnaDTO2.getId_files()),qnaDTO2.getDescription());
+								model.addAttribute("id_remesas", qnaDTO2.getId());
+								log.info("qnaDataDetalle =>{}",String.valueOf(qnaDTO2.getId())); 
+								
+						}
 					}
 		 }
 		}		
+		
+		log.info("header =>{} ", header);
+		model.addAttribute("configuration", header);
+		String shippingTag = insertShipping.buildTagShipping(header, model);
+		log.info("shippingTag =>{} ", shippingTag);
+		model.addAttribute("tag_envio", shippingTag);
+		List<String> qnaList = insertShipping.buildQnaList(header, model);
+		model.addAttribute("qna_list", qnaList);
+		
 		idState="";
 		String response = validaUser.validateUserAccess(userId, passwd);
 		return response;

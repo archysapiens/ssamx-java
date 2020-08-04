@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 import com.ssamx.dto.AnioQnaDTO;
 import com.ssamx.dto.QnaDTO;
 import com.ssamx.dto.SesionDTO;
+import com.ssamx.dto.ShippingTagDTO;
 import com.ssamx.model.Usuarios;
 
 @Repository
@@ -68,7 +69,7 @@ public interface SesionRepo extends JpaRepository<Usuarios, String>{
 					"WHERE rem.id_files=arc.id AND  " + 
 					"rem.anio=?1   " + 
 					"AND rem.qna=?2 " + 
-					"AND rem.id_state=?3  "  
+					"AND rem.id_state=?3 and rem.art74_fed ='A' "  
 					, nativeQuery = true)
 			List<AnioQnaDTO> findByAnioQnaDet(int anio, int qna, String idState);
 		 
@@ -84,4 +85,22 @@ public interface SesionRepo extends JpaRepository<Usuarios, String>{
 					public String getDescription();
 					public String getArt74_fed();
 			}
+			 
+
+			 @Query(value="SELECT  logg.id_shipping, logg.shipping_tag " + 
+			 		"              FROM shipping rem, logger logg       " + 
+			 		"              WHERE rem.id=logg.id_shipping AND     " + 
+			 		"              id_state=?3 AND                 " + 
+			 		"              id_files=5 AND                    " + 
+			 		"              anio=?1 AND logg.art74_fed='A' AND  " + 
+			 		"              qna=?2 AND logg.stat NOT IN ('C','E') " + 
+			 		"              ORDER BY logg.registration_date DESC"  
+						, nativeQuery = true)
+				List<ShippingTagDTO> findByShppingTag(int anio, int qna, String idState);		
+			 
+			 public interface ShippingTagDTO{
+					public int getId();
+					public String getShipping_tag();
+			 
+			 }
 }
